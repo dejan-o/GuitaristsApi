@@ -56,9 +56,3 @@ app.listen(3002, () => {
 });
 
 
-// /api/v1/guitarists  returns all guitarists
-// parameters that you can apply individually or combine them together
-// name:string     /api/v1/guitarists?name=someName
-// strings:number  /api/v1/guitarists?strings=6
-// guitars:string  /api/v1/guitarists?guitars=guitarName
-// combining example /api/v1/guitarists?guitars=guitarName&strings=6
