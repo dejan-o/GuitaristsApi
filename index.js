@@ -1,10 +1,11 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
-
+const cors = require('cors');
 const router = express.Router();
-
+app.use(cors());
 app.use(express.json());
+
 //TODO
 //guitars route,
 //post delete guitarist route
@@ -14,9 +15,7 @@ app.use(express.json());
 const apiParams = ['name', 'strings', 'guitars'];
 
 //Adding image links based on the user directory
-const dataTemp = JSON.parse(fs.readFileSync(`${__dirname}/data/guitarists.json`));
-const data = {...dataTemp, guitarists: dataTemp.guitarists.map( guitarist => {return {...guitarist, image: `${__dirname}/images/${guitarist.image}`}}) };
-fs.writeFileSync(`${__dirname}/data/guitarists.json`, JSON.stringify(data));
+const data = JSON.parse(fs.readFileSync(`${__dirname}/data/guitarists.json`));
 
 const getGuitarists = (req,res) => {
     const queries = req.query;
@@ -45,10 +44,16 @@ const getGuitarists = (req,res) => {
 
 };
 
+const getImage = (req,res) => {
+    const imageName = req.query.imageName;
+    return res.sendFile(`${__dirname}/images/${imageName}`); 
+}
+
 app.use('/api/v1/guitarists', router);
 
 router.route('/').get(getGuitarists);
 
+router.route('/images').get(getImage);
 app.listen(3002, () => {
 
     console.log('server started....');
