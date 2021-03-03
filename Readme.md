@@ -11,3 +11,7 @@ strings:number  localhost:3002/api/v1/guitarists?strings=6
 guitars:string  localhost:3002/api/v1/guitarists?guitars=guitarName
 
 combining example localhost:3002/api/v1/guitarists?guitars=guitarName&strings=6
+
+# images route
+
+example localhost:3002/api/v1/guitarists/images?image=01_Jimi_Hendrix.jpg

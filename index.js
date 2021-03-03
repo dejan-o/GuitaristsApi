@@ -45,7 +45,7 @@ const getGuitarists = (req,res) => {
 };
 
 const getImage = (req,res) => {
-    const imageName = req.query.imageName;
+    const imageName = req.query.image;
     return res.sendFile(`${__dirname}/images/${imageName}`); 
 }
 
